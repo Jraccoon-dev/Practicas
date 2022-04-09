@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Website in React</title>
+		<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  	<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+		<style>
+picture{
+	display: flex;
+	flex-direction:column;
+	text-align: center;
+	width: 100px;
+}
+img {
+	box-shadow: 0 0 15px #999;
+	border-radius: 50%;
+	width: 100px;
+}
+		</style>
+	</head>
+	<body>
+		<h1>Girls in Tech</h1>
+		<div id="app">
+			<script type="text/babel">
+				const $app = document.getElementById("app");
+				const useState = React.useState;
+
+				const Avatar = props => {
+								const [enabled, setEnabled] = useState(true)
+								const src = `https://randomuser.me/api/portraits/women/${props.id}.jpg`;
+								const className = enabled ? '': 'disabled'
+
+								return (
+									<picture>
+										<img onClick={() => setEnabled(!enabled) } className={className}	src={src}/>
+										<strong>{props.name}</strong>	
+									</picture>
+								);
+							};
+
+				ReactDOM.render(
+					<div>
+						<Avatar id={22} name='Rosa'/>
+						<Avatar id={43} name='Lady'/>
+					</div>,
+					$app
+					);
+			</script>
+		</div>
+	</body>
+</html>
